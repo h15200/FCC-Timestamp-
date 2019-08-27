@@ -21,12 +21,15 @@ app.get("/", function (req, res) {
 
 // your first API endpoint... 
 app.get("/API/timestamp/:date_string?", function (req, res) {
+  const date_string = req.params.date_string
   
-  if (!req.params.date_string){
+  if (!date_string){
   //console.log('empty')
     return res.json({data: new Date()})
 }
-  console.log(req.params.date_string)
+  // Date.parse() on an invalid 
+  else if (!Date.parse(new Date(date_string)))
+  
   res.json({greeting: req.params.date_string});
 });
 
